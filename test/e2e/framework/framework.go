@@ -20,14 +20,8 @@ import (
 )
 
 const (
-	testNetworkName = "wa-nad"
-	testNamespace   = "default"
-	testPodName     = "test-pod"
-	testImage       = "docker.io/centos:latest"
-	ipv4TestRange   = "10.10.0.0/16"
-	singlePodName   = "whereabouts-basic-test"
-	createTimeout   = 10 * time.Second
-	deleteTimeout   = 2 * createTimeout
+	createTimeout = 30 * time.Second
+	deleteTimeout = 2 * createTimeout
 )
 
 type Framework struct {
@@ -125,5 +119,5 @@ func podObject(podNamespace, podName, image string, label, annotations map[strin
 }
 
 func containerCmd() []string {
-	return []string{"/bin/ash", "-c", "trap : TERM INT; sleep infinity & wait"}
+	return []string{"/bin/bash", "-c", "trap : TERM INT; sleep infinity & wait"}
 }
