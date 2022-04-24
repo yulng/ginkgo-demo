@@ -35,4 +35,4 @@ jobs:
       - name: setup kind cluster
         run: sudo chmod +x ./test/hack/setup-kind-cluster.sh && ./test/hack/setup-kind-cluster.sh --number-of-compute $NUMBER_OF_COMPUTE_NODES
       - name: Execute golang based E2E tests
-        run: pushd test/e2e; ginkgo -v ; popd
+        run: pushd test/e2e; go test -v . ; popd
