@@ -37,6 +37,10 @@ var _ = Describe("Whereabouts functionality", func() {
 			Expect(err).NotTo(HaveOccurred())
 		})
 
+		AfterEach(func() {
+			Expect(f.DelNetAttachDef(netAttachDef)).To(Succeed())
+		})
+
 		Context("Single pod tests", func() {
 			BeforeEach(func() {
 				By("creating a pod with whereabouts net-attach-def")
@@ -52,10 +56,10 @@ var _ = Describe("Whereabouts functionality", func() {
 				Expect(err).NotTo(HaveOccurred())
 			})
 
-			//AfterEach(func() {
-			//	By("deleting pod with whereabouts net-attach-def")
-			//	Expect(f.DeletePod(pod)).To(Succeed())
-			//})
+			AfterEach(func() {
+				By("deleting pod with whereabouts net-attach-def")
+				Expect(f.DeletePod(pod)).To(Succeed())
+			})
 
 			It("allocates a single pod within the correct IP range", func() {
 				By("checking pod IP is within whereabouts IPAM range")
