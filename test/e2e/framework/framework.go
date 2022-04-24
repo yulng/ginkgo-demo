@@ -20,7 +20,7 @@ import (
 )
 
 const (
-	createTimeout = 10 * time.Second
+	createTimeout = 30 * time.Second
 	deleteTimeout = 2 * createTimeout
 )
 
